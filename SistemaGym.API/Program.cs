@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaGym.API.Data;
+using SistemaGym.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddScoped<IMiembroService, MiembroService>();
 // 🔹 Registrar DbContext
 builder.Services.AddDbContext<GymDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
